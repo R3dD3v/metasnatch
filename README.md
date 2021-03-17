@@ -16,5 +16,5 @@ Currently
 - Because paths are hardcoded, it only works for Full Metal Jackie
 
 TODO
-- Pull data from any iHeart radio station
+- Pull song metadata from any iHeart radio station
 - Pull radio station data
