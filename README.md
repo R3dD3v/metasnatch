@@ -12,9 +12,8 @@ Like any sensible person, I decided to do it myself
 
 Currently
 - Functions as needed
-- Paths are hardcoded
-- Because paths are hardcoded, it only works for Full Metal Jackie
+- You can freely choose your radio station
+- No protections for entering the wrong ID
 
 TODO
-- Pull song metadata from any iHeart radio station
 - Pull radio station data
