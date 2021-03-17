@@ -1,5 +1,7 @@
 # metasnatch
 iHeart Radio Metadata Grabber
+--Written in Python
+
 -----------------------------
 
 So I was using Tizonia to listen to iHeart radio
