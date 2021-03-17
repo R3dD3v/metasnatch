@@ -12,8 +12,9 @@ Like any sensible person, I decided to do it myself
 
 Currently
 - Functions as needed
-- You can freely choose your radio station
+- You can freely choose your radio station (As long as it pulls data from api.iheart.com)
 - No protections for entering the wrong ID
 
 TODO
 - Pull radio station data
+- Fix all cases where iHeart doesn't pull metadata from api.iheart.com
