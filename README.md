@@ -1,6 +1,6 @@
 # metasnatch
 iHeart Radio Metadata Grabber
---Written in Python
+-- Written in Python
 
 -----------------------------
 
