@@ -13,7 +13,6 @@ while a == 0:
     with open("metasnatch.json", "r") as jsonfile:
         settings = json.load(jsonfile)
     defaultStation = settings["defaultStation"]
-    debugMode = settings["debug"]
     jsonfile.close()
     # Get input
     os.system('clear')
