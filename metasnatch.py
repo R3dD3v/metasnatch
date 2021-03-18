@@ -1,4 +1,4 @@
-#   Metasnatch 0.5.6
+#   Metasnatch 0.5.7
 #   RedDevRedemption
 
 # Importing libraries lol
@@ -16,13 +16,13 @@ while a == 0:
     jsonfile.close()
     # Get input
     os.system('clear')
-    print("\033[96m - Metasnatch 0.5.6 - \033[00m")
+    print("\033[96m - Metasnatch 0.5.7 - \033[00m")
     print("h | help")
     station = input("Enter Station ID | ")
     if station == "":
         station = defaultStation
     url = "https://api.iheart.com/api/v3/live-meta/stream/" + str(station) + "/trackHistory?limit=1"
-    i = 15
+    i = 10
     err = 0
     oldtitle = "a"
     os.system('clear')
@@ -32,9 +32,6 @@ while a == 0:
             print("The station ID is the last 4 numbers in the link of your iHeart radio station.")
             print("iheart.com/full-metal-jackie-6225 | The ID is 6225")
             print("Hopefully that clears things up")
-            print("If you're sure your ID is correct, the metadata source of your station probably hasn't been implemented yet.")
-            print("iHeart grabs metadata from many sources, so I have to program for each of them.")
-            print("Currently, only api.iheart.com is supported.")
             print("[Clearing in " + str(i) + "]")
             i = i - 1
             sleep(1)
@@ -60,11 +57,11 @@ while a != 0:
             print(artist + " - " + title + "\033[00m" + "\033[92m")
             print("-----------" + "\033[94m")
             print("iHeart Radio | Channel ID " + str(station) + "\033[92m")
-            print("Metasnatch 0.5.6 | RedDevRedemption")
+            print("Metasnatch 0.5.7 | RedDevRedemption")
             oldtitle = title
     elif err == 0:
         os.system('clear')
-        print("\033[96m" + "Thanks for listening! (No Song Metadata)")
+        print("\033[96m" + "Thanks for listening! (No Song Metadata) | " + "Channel ID " + str(station))
         print("\033[98m" + "If you're seeing this, there's either no song playing, the metadata on the api hasn't updated yet, or you entered an invalid station ID.")
         print("Worst case scenario I fucked up and my code doesn't work.")
         err = 1
