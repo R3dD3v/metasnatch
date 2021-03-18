@@ -1,21 +1,57 @@
+#   Metasnatch 0.5.6
+#   RedDevRedemption
+
+# Importing libraries lol
 import requests as rq
 from time import sleep
 import os
-print("To find station ID, look at the end of the link. iheart.com/live/the-new-93q-5892 as an example, the last 4 numbers is your station ID. So if I wanted to listen to Full Metal Jackie, I'd enter 6225. Or if I wanted to listen to The Vinyl Experience, I'd enter 6878.")
-print("Enter 0 to listen to Full Metal Jackie, this only exists to make it easier for me to listen to FMJ lol")
-station = int(input("Enter Station ID | "))
-if station == 0:
-    station = 6225
-url = "https://api.iheart.com/api/v3/live-meta/stream/" + str(station) + "/currentTrackMeta"
-i = 1
-err = 0
-oldtitle = "a"
-os.system('clear')
-while i < 10:
+import json
+
+a = 0
+while a == 0:
+    # Doing magic config stuff
+    with open("metasnatch.json", "r") as jsonfile:
+        settings = json.load(jsonfile)
+    defaultStation = settings["defaultStation"]
+    debugMode = settings["debug"]
+    jsonfile.close()
+    # Get input
+    os.system('clear')
+    print("\033[96m - Metasnatch 0.5.6 - \033[00m")
+    print("h | help")
+    station = input("Enter Station ID | ")
+    if station == "":
+        station = defaultStation
+    url = "https://api.iheart.com/api/v3/live-meta/stream/" + str(station) + "/trackHistory?limit=1"
+    i = 15
+    err = 0
+    oldtitle = "a"
+    os.system('clear')
+    if station == "h":
+        while i > -1:
+            os.system('clear')
+            print("The station ID is the last 4 numbers in the link of your iHeart radio station.")
+            print("iheart.com/full-metal-jackie-6225 | The ID is 6225")
+            print("Hopefully that clears things up")
+            print("If you're sure your ID is correct, the metadata source of your station probably hasn't been implemented yet.")
+            print("iHeart grabs metadata from many sources, so I have to program for each of them.")
+            print("Currently, only api.iheart.com is supported.")
+            print("[Clearing in " + str(i) + "]")
+            i = i - 1
+            sleep(1)
+        os.system('clear')
+    if station != "h":
+        a = a + 1
+
+# Let's get groovy!
+while a != 0:
     data = rq.get(url)
-    if data.status_code == 200:
-        artist = data.json()['artist']
-        title = data.json()['title']
+    stat = data
+    info = data.json()['data']
+    data = info[0]
+    if stat.status_code == 200:
+        artist = data['artist']
+        title = data['title']
         err = 0
         if oldtitle != title:
             os.system('clear')
@@ -24,7 +60,8 @@ while i < 10:
             print("Now Playing")
             print(artist + " - " + title + "\033[00m" + "\033[92m")
             print("-----------" + "\033[94m")
-            print("iHeart Radio | Channel ID " + str(station))
+            print("iHeart Radio | Channel ID " + str(station) + "\033[92m")
+            print("Metasnatch 0.5.6 | RedDevRedemption")
             oldtitle = title
     elif err == 0:
         os.system('clear')
