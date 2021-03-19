@@ -17,3 +17,14 @@ Currently
 TODO
 - Pull radio station data
 - Add Station search so we aren't relying on IDs
+- Write install script, because even though it's easy to install, some people are lazy
+
+----------------------------
+
+Installation
+- `python -m pip install requests`
+- `git clone https://github.com/r3dd3v/metasnatch.git`
+- `cd metasnatch-main`
+- `python3 metasnatch.py`
+  If you'd like, you can add an alias to ~/.bashrc as metasnatch
+  `alias metasnatch="python3 /home/metasnatch-main/metasnatch.py"`
