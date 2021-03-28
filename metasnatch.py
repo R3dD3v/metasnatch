@@ -35,6 +35,8 @@ def menu(channel=None):
         quit()
 
 def quit():
+    print("Exiting...")
+    sleep(1)
     exit(1)
 
 def help():
@@ -53,10 +55,23 @@ def display(url, station):
     viewing = True
     while viewing:
         try:
-            data = rq.get(url)
-            stat = data
-            info = data.json()['data']
-            data = info[0]
+            try:
+                data = rq.get(url)
+                stat = data
+                info = data.json()['data']
+                data = info[0]
+            except KeyError:
+                if station == "q":
+                    quit()
+                i=3
+                while i > -1:
+                    os.system('cls||clear')
+                    print("Channel not found.")
+                    print("[Clearing in " + str(i) + "]")
+                    i=i-1
+                    sleep(1)
+                menu()
+            
             if stat.status_code == 200:
                 artist = data['artist']
                 title = data['title']
@@ -86,6 +101,7 @@ def display(url, station):
                 menu(channel)
             sleep(5)
         except Exception as e:
+            print(e)
             quit()
 
 if __name__ == '__main__':
