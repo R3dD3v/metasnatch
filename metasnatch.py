@@ -25,7 +25,7 @@ def menu(channel=None):
         station = channel
     if station == "":
         station = setup()
-    url = "https://api.iheart.com/api/v3/live-meta/stream/" + str(station) + "/trackHistory?limit=1"
+    url = f"https://api.iheart.com/api/v3/live-meta/stream/{str(station)}/trackHistory?limit=1"
     os.system('cls||clear')
     if station == "h":
         help()
@@ -46,7 +46,7 @@ def help():
         print("The station ID is the last 4 numbers in the link of your iHeart radio station.")
         print("iheart.com/full-metal-jackie-6225 | The ID is 6225")
         print("Hopefully that clears things up")
-        print("[Clearing in " + str(i) + "]")
+        print(f"- Clearing in {str(i)} -")
         i = i - 1
         sleep(1)
     menu()
@@ -67,7 +67,7 @@ def display(url, station):
                 while i > -1:
                     os.system('cls||clear')
                     print("Channel not found.")
-                    print("[Clearing in " + str(i) + "]")
+                    print(f" - Clearing in {str(i)} - ")
                     i=i-1
                     sleep(1)
                 menu()
@@ -80,11 +80,11 @@ def display(url, station):
                 if oldtitle != title:
                     os.system('cls||clear')
                     print("\033[92m")
-                    print("-----------" + "\033[96m")
+                    print("----------- \033[96m")
                     print("Now Playing")
-                    print(artist + " - " + title + "\033[00m" + "\033[92m")
-                    print("-----------" + "\033[94m")
-                    print("iHeart Radio | Channel ID " + str(station) + "\033[92m")
+                    print(f"{artist} - {title} \033[00m \033[92m")
+                    print("----------- \033[94m")
+                    print(f"iHeart Radio | Channel ID {str(station)} \033[92m")
                     print("Metasnatch 0.5.8 | RedDevRedemption")
                     oldtitle = title
                     channel = input("Snatch another channel: ")
@@ -92,8 +92,8 @@ def display(url, station):
                     menu(channel)
             elif err == 0:
                 os.system('cls||clear')
-                print("\033[96m" + "Thanks for listening! (No Song Metadata) | " + "Channel ID " + str(station))
-                print("\033[98m" + "If you're seeing this, there's either no song playing, the metadata on the api hasn't updated yet, or you entered an invalid station ID.")
+                print(f"\033[96m Thanks for listening! (No Song Metadata) | Channel ID {str(station)}")
+                print("\033[98m If you're seeing this, there's either no song playing, the metadata on the api hasn't updated yet, or you entered an invalid station ID.")
                 print("Worst case scenario I fucked up and my code doesn't work.")
                 err = 1
                 channel = input("Snatch another channel: ")
